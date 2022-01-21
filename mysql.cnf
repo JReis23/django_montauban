@@ -1,0 +1,5 @@
+# my.cnf
+[client]
+database = "montauban"
+user = "root"
+password = ""

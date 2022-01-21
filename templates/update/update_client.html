@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{% static 'css/update_client.css' %}">
+{%endblock stylesheet%}
+
+{% block body%}
+
+
+
+<div class="row title align-items-center">
+    <div class="col-sm-6">
+        <h2 class="align-self-center">Modification <b>Client</b></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 align-self-center">
+        <div class="m-3 m-lg-5">
+            <form action="" method="POST" enctype="multipart/form-data"
+                class="row form-group col-md-12 g-3 justify-content-around">
+                {% csrf_token %}
+                <div class="col-md-4">
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-2">Prenom</label>
+                        <div class="col-sm-8">
+                            {{form.prenom_clients}}
+                            {{form.prenom_clients.errors}}
+                        </div>
+                    </div>
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-2">Nom</label>
+                        <div class="col-sm-8">
+                            {{form.nom_clients}}
+                            {{form.nom_clients.errors}}
+
+                        </div>
+                    </div>
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-2">Téléphone</label>
+                        <div class="col-sm-8">
+                            {{form.telephone_clients}}
+                            {{form.telephone_clients.errors}}
+
+                        </div>
+                    </div>
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-2">Email</label>
+                        <div class="col-sm-8">
+                            {{form.mail_clients}}
+                            {{form.mail_clients.errors}}
+
+                        </div>
+                    </div>
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-5">Date de naissance</label>
+                        <div class="col-sm-6">
+                            {{form.date_naissance_clients}}
+                            {{form.date_naissance_clients.errors}}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-2">Adresse</label>
+                        <div class="col-sm-9">
+                            {{form.adresse_clients}}
+                            {{form.adresse_clients.errors}}
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-4">Code postal</label>
+                        <div class="col-sm-8">
+                            {{form.code_postal_clients}}
+                            {{form.code_postal_clients.errors}}
+
+                        </div>
+                    </div>
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-2">Ville</label>
+                        <div class="col-sm-8">
+                            {{form.ville_clients}}
+                            {{form.ville_clients.errors}}
+
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-2">Departement</label>
+                        <div class="col-sm-8">
+                            {{form.departement_clients}}
+                            {{form.departement_clients.errors}}
+
+                        </div>
+                    </div>
+                    <div class="mb-3 row justify-content-between">
+                        <label class="form-label col-sm-2">Photo</label>
+                        <div class="col-sm-8">
+                            {{form.photo_clients}}
+                            {{form.photo_clients.errors}}
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-3 align-self-center">
+                    <img src="{{clientup.photo_clients.url}}" alt="" class="img-fluid">
+                </div>
+
+                <div class="col">
+                    <button type="submit" class="btn btn-success">Confirmer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock body %}
+{% block js%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHj7Rpj1jkT4tRMfm0LbdlJgWLv2KCZEU&libraries=places&callback=initAutocomplete"
+    async defer></script>
+<script src="{% static 'js/autocompleteClient.js'%}"></script>
+{% endblock js%}

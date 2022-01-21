@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% load static %}
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{% static 'css/checks.css' %}">
+
+{%endblock stylesheet%}
+
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row title">
+        <div class="col-12 align-self-center">
+            <h2>Checkpoints pour le projet <b>{{ projet.nom_projets }}</b> du client
+                <b>{{projet.projet_clients.prenom_clients}} {{ projet.projet_clients.nom_clients }}</b>
+            </h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+
+
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <li class="list-group-item d-flex justify-content-between">
+                <label for="id_check1">Création Projet</label>
+                {{ form_checkpoints.check1 }}
+            </li>
+
+
+
+            {% if checks.check1 == True %}
+            <li class="list-group-item d-flex justify-content-between">
+                {{ form_checkpoints.check2.errors }}
+                <label for="id_check2">Consultation des fornisseurs</label>
+
+                {{ form_checkpoints.check2 }}
+
+            </li>
+            {% endif %}
+
+
+            {% if checks.check2 == True %}
+            <li class="list-group-item d-flex justify-content-between">
+                {{ form_checkpoints.check3.errors }}
+                <label for="id_check3">Réalisation de devis</label>
+                {{ form_checkpoints.check3 }}
+    </div>
+    </li>
+
+
+    {% endif %}
+
+
+    {% if checks.check3 == True %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check4.errors }}
+        <label for="id_check4">Validation de devis</label>
+        {{ form_checkpoints.check4 }}
+    </li>
+    {% endif %}
+
+    {% if checks.check4 == True %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check5.errors }}
+        <label for="id_check5">Envoi de devis au Client</label>
+        {{ form_checkpoints.check5 }}
+    </li>
+    {% endif %}
+
+    {% if checks.check5 == True %}
+    <div class="accordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h5>Appeller client pour confirmer recéption de devis</h5>
+                </button </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="input-group mb-3 list-group">
+                            <li class="list-group-item justify-content-between d-flex">
+                                <label class="mb-3 form-label" for="">Le client a-t-il reçu le
+                                    devis?</label>
+                                {{ form_checkpoints.check8.errors }}
+                                <div class="form-check form-check-inline">
+                                    {{ form_checkpoints.check8 }}
+                                </div>
+                            </li>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </li>
+    {% endif %}
+
+    {% if checks.check8 %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check7.errors }}
+        <label for="id_check7">Offre finale</label>
+        {{ form_checkpoints.check7 }}
+    </li>
+    {% endif %}
+
+    {% if checks.check7 == True %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check6.errors }}
+        <label for="id_check8">Demande préalable de travaux</label>
+        {{ form_checkpoints.check6 }}
+    </li>
+    {% endif %}
+
+    {% if checks.check6 == True %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check9.errors }}
+        <label for="id_check9">Recéption de demandes réalisées</label>
+        {{ form_checkpoints.check9 }}
+    </li>
+
+    {% endif %}
+
+    {% if checks.check9 == True %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check10.errors }}
+        <label for="id_check10">Commande de matériaux pour le chantier</label>
+        {{ form_checkpoints.check10 }}
+    </li>
+    {% endif %}
+
+    {% if checks.check10 == True %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check11.errors }}
+        <label for="id_check11">Recéption de matériaux</label>
+        {{ form_checkpoints.check11 }}
+    </li>
+    {% endif %}
+
+
+    {% if checks.check11 == True %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check12.errors }}
+        <label for="id_check12">Date de début de chantier</label>
+        {{ form_checkpoints.check12 }}
+    </li>
+    {% endif %}
+
+    {% if checks.check12 == True %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check13.errors }}
+        <label for="id_check13">Bon de livraison</label>
+        {{ form_checkpoints.check13 }}
+    </li>
+    {% endif %}
+
+
+    {% if checks.check13 == True %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ form_checkpoints.check14.errors }}
+        <label for="id_check14">Clôture de dossier</label>
+        {{ form_checkpoints.check14 }}
+    </li>
+    {% endif %}
+    <div class="justify-content-end d-flex button">
+        <button type="submit" class="btn-outline-success">Confirmer</button>
+    </div>
+    </form>
+    </ul>
+    </form>
+</div>
+
+
+
+
+{% endblock body%}
+
+{% block js%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+{% endblock js%}

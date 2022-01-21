@@ -1,0 +1,93 @@
+{% extends 'contact_client.html' %}
+
+{% block contact %}
+<div class="container infoclientcontact">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h5>Information Nouveau Client </h5>
+            <form action="" method="POST" enctype="multipart/form-data" class="row g-3">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+                {{ contact.as_p }}
+
+                <!-- <div class="col-md-6">
+                    <label class="form-label">Prenom</label>
+                    {{form.prenom_clients}}
+                    {{form.prenom_clients.errors}}
+
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Nom</label>
+                    {{form.nom_clients}}
+                    {{form.nom_clients.errors}}
+
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Téléphone</label>
+                    {{form.telephone_clients}}
+                    {{form.telephone_clients.errors}}
+
+                </div>
+            
+                <h5>Marcation Rendez-vous </h5>
+                <div class="col-md-6 ">
+                    <label class="form-label">Motif du contact</label>
+                    {{contact.motif_contact}}
+                   
+
+                </div>
+                <div class="col-md-6 ">
+                    <label class="form-label">Categorie</label>
+                    {{contact_set.categorie}}
+                    {{contact.errors}}
+
+
+                </div>
+                <div class="col-md-12 ">
+                    <label class="form-label">Categorie</label>
+                    {{contact.description_contact}}
+                    {{contact.errors}}
+
+
+                </div>
+                
+                <div class="col-md-6 ">
+                    <label class="form-label">Date et heure début Rdv</label>
+                    {{contact.date_debut}}
+                    {{contact.errors}}
+
+
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Date et heure fin Rdv</label>
+                    {{contact.date_fin}}
+                    {{contact.errors}}
+
+
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Type</label>
+                    {{contact.type_client}}
+                    {{contact.errors}}
+
+
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Intervenant</label>
+                    {{contact_set.intervenants}}
+                    {{contact.errors}}
+
+
+                </div> -->
+
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary rdv">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock contact %}

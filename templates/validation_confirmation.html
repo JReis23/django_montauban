@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{% static 'css/validation.css' %}">
+{%endblock stylesheet%}
+
+{% block body %}
+
+
+<div class="row title align-items-center">
+    <div class="col-sm-6">
+        <h2 class="align-self-center">Validation <b>Projet</b></h2>
+    </div>
+</div>
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ form.errors }}
+    <button type="submit" class="btn btn-secondary">Enregistrer</button>
+</form>
+
+
+{% endblock body %}
+
+{% block js%}
+{% endblock js%}

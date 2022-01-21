@@ -1,0 +1,57 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+#delete_client {
+	height: 100vh;
+	margin-left: 16vw;
+}
+
+
+.container-fluid{
+    padding: 0;
+    margin: 0;
+}
+
+.title{
+    background: radial-gradient(#244382,#191e3f);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 9vh;
+}
+
+.title h2{
+    margin-left: 15px;
+    font-size: 24px;
+}
+
+.row {
+    padding: 0;
+    margin: 0;
+}
+
+.box {
+    height: 100vh;
+}
+
+button{
+    margin-right: 10px;
+    width: 120px;
+}
+
+a {
+    width: 120px;
+}
+
+form {
+    border: solid 2px grey;
+    border-radius: 20px !important;
+    width: 400px !important;
+    height: 100px !important;
+    box-shadow: rgb(185, 185, 185) 10px 10px 10px 10px;
+    background: rgb(255, 255, 255);
+}
+

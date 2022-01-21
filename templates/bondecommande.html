@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% load static %}
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{% static 'css/devis.css' %}">
+
+{%endblock stylesheet%}
+
+
+{% block body%}
+
+        <div class="row title ">
+            <h2 class="align-self-center">Inserez le <b>Bon de commande</b> pour le projet <b>{{ projet_devis.nom_projets }}</b></h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {{ form.errors}}
+
+                        <button type="submit">Envoyer</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock body%}

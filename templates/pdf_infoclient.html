@@ -1,0 +1,95 @@
+<head>
+    <style>
+        @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+        }
+    } @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+        }
+    }
+    </style>
+</head>
+
+<body>
+<div id="k_infos_client">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 align-self-center">
+                <div class="m-3 m-lg-5">
+                    <form action="" method="POST" enctype="multipart/form-data"
+                        class="row form-group col-md-12 g-3 justify-content-around">
+                        {% csrf_token %}
+                        <div class="col-md-4">
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-2">Nom: {{data.prenom_clients}} {{data.nom_clients}}</label>
+                                
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-2">Téléphone: {{data.telephone_clients}}</label>
+                                
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-2">Email: {{data.mail_clients}}</label>
+                                
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-5">Date de naissance: {{data.date_naissance_clients}}</label>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-2">Adresse: {{data.adresse_clients}}</label>
+                                
+                            </div>
+
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-4">Code postal: {{data.code_postal_clients}}</label>
+                                
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-2">Ville: {{data.ville_clients}}</label>
+                                
+                            </div>
+
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-2">Departement: {{data.departement_clients}}</label>
+                                
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-md-3 align-self-center">
+                            <img src="{{clientinfo.photo_clients.url}}" alt="" class="img-fluid">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</body>

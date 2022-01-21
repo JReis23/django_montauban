@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/liste_projet.css' %}">
+{% endblock stylesheet %}
+
+{% block body %}
+
+
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6 d-flex">
+                    <h2>Liste <b>Projets</b></h2>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead class="col-sm-6">
+                <tr>
+                    <form action="" method="GET">
+                        {% csrf_token%}
+                        <th class="up-thead">{{myFilter.form.numero}}</th>
+                        <th class="up-thead">{{myFilter.form.projet_clients}}</th>
+                        <th class="up-thead">{{myFilter.form.nom_projet}}</th>
+                        <th class="d-flex justify-content-between up-thead">{{myFilter.form.date_debut}}
+                            {{myFilter.form.date_fin}}</th>
+                        <th class="up-thead">{{myFilter.form.entites_projets}}</th>
+                        <th class="up-thead">{{myFilter.form.projet_status_projets}}</th>
+                        <th class="up-thead"><button type="submit" class="btn btn-success">Recherche</button>
+                        </th>
+                    </form>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th>Projet</th>
+                    <th>Client</th>
+                    <th>Titre</th>
+                    <th>Date Création</th>
+                    <th>Entite</th>
+                    <th>Statut</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for projets in page_obj %}
+                <tr>
+                    <td class="text-center"><a href="{% url 'info_projet'  projets.pk %}">{{projets.id}}</a></td>
+                    <td><a href="{% url 'client_info' projets.projet_clients.pk %}">{{ projets.projet_clients.prenom_clients }} {{ projets.projet_clients.nom_clients }}</a>
+                    </td>
+                    <td class="overflow-auto">{{ projets.nom_projets }}</td>
+                    <td>{{ projets.date_debut_projets }}</td>
+                    <td>{{ projets.entites_projets }}</td>
+                    <td>{{ projets.projet_status_projets }}</td>
+                    <td>
+                        <a href="{% url 'projet_update' projets.pk %}" class="settings" title="Modifier"
+                            data-toggle="tooltip"><i class="fas fa-pen text-warning"></i></a>
+                        {% if user.is_superuser == True %}
+                        <a href="{% url 'projet_delete' projets.pk %}" class="delete" title="Effacer"
+                            data-toggle="tooltip"><i class="fas fa-trash-alt text-danger"></i></a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="pagination">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item disabled"><a href="?page=1">Premiere</a></li>
+                <li class="page-item disabled"><a href="?page={{ page_obj.previous_page_number }}">Avant</a></li>
+                {% endif %}
+                {% for n in page_obj.paginator.page_range %}
+                {% if page_obj.number == n %}
+                <li class="page-item active"><a href="?page={{n}}" class="page-link">{{n}}</a></li>
+                {% elif n > page_obj.number|add:-5 and n < page_obj.number|add:5 %} <li class="page-item"><a
+                        class="page-link" href="?page={{n}}">{{n}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link">Suivant</a>
+                    </li>
+                    <li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}"
+                            class="page-link">Derniere</a></li>
+                    {% endif %}
+            </ul>
+        </div>
+    </div>
+
+
+{% endblock body %}
+{% block js%}
+<script src="{% static 'js/liste_projet.js' %}"></script>
+{% endblock js%}

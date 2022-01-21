@@ -1,0 +1,38 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+#creation_projet {
+	height: 100vh;
+	margin-left: 16vw;
+}
+
+
+.container-fluid{
+    padding: 0;
+    margin: 0;
+}
+
+.title{
+    background: radial-gradient(#244382,#191e3f);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 9vh;
+}
+
+.title h2{
+    margin-left: 15px;
+    font-size: 24px;
+}
+
+.row {
+    padding: 0;
+    margin: 0;
+}
+
+button{
+    margin-right: 50px;
+}

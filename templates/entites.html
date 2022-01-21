@@ -1,0 +1,39 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12 align-self-center">
+                    <div class="m-3 m-lg-5">
+                        <form action="" method="POST" enctype="multipart/form-data"
+                            class="row form-group col-md-12 g-3 justify-content-around">
+                            {% csrf_token %}
+                            {{form_entite.as_p}}
+                            <div class="col-md-4">
+                                <div class="mb-3 row justify-content-between">
+                                    <label class="form-label col-sm-2">Prenom</label>
+                                    <div class="col-sm-8">
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <input type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

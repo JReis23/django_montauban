@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{% static 'css/liste_client.css' %}">
+{%endblock stylesheet%}
+
+{% block body%}
+
+
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6 d-flex">
+                        <h2>Liste <b>Clients</b></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{% url 'creation_clients' %}" class="btn btn-secondary"><i
+                                class="fas fa-plus-circle text-success"></i>
+                            <span>Nouveau Client</span></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <form action="" method="GET">
+                            {% csrf_token%}
+                            <th class="up-thead">{{myFilter.form.nom}}</th>
+                            <th class="up-thead">{{myFilter.form.telephone}}</th>
+                            <th class="up-thead">{{myFilter.form.code_postal}}</th>
+                            <th class="up-thead">{{myFilter.form.ville}}</th>
+                            <th class="up-thead"><button type="submit"
+                                    class="btn btn-outline-secondary">Recherche</button></th>
+                        </form>
+                    </tr>
+                </thead>
+                <thead>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Telephone</th>
+                            <th>Code Postal</th>
+                            <th>Ville</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    <tr>
+                        {% for clients in page_obj %}
+                        <td><a href="{% url 'client_info' clients.pk %}"><img src="{{ clients.photo_clients.url }}"
+                                    class="avatar img-fluid" alt="Avatar">
+                                {{ clients.prenom_clients}} {{ clients.nom_clients}}</a></td>
+                        <td>{{ clients.telephone_clients }}</td>
+                        <td>{{ clients.code_postal_clients }}</td>
+                        <td>{{ clients.ville_clients }}</td>
+                        <td>
+                            <a href="{% url 'clients_update' clients.pk%}" class="settings" title="Modifier" data-toggle="tooltip"><i
+                                class="fas fa-pen text-warning"></i></a>
+                                {% if user.is_superuser == True %}
+                            <a href="{% url 'client_delete' clients.pk %}" class="delete" title="Effacer" data-toggle="tooltip"><i
+                                    class="fas fa-trash-alt text-danger"></i></a>
+                                    {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            <div class="pagination">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item disabled"><a href="?page=1">Premiere</a></li>
+                    <li class="page-item disabled"><a href="?page={{ page_obj.previous_page_number }}">Avant</a></li>
+                    {% endif %}
+                    {% for n in page_obj.paginator.page_range %}
+                    {% if page_obj.number == n %}
+                    <li class="page-item active"><a href="?page={{n}}" class="page-link">{{n}}</a></li>
+                    {% elif n > page_obj.number|add:-5 and n < page_obj.number|add:5 %} <li class="page-item"><a
+                            class="page-link" href="?page={{n}}">{{n}}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li class="page-item"><a href="?page={{ page_obj.next_page_number }}"
+                                class="page-link">Suivant</a></li>
+                        <li class="page-item"><a href="?page={{ page_obj.paginator.num_pages }}"
+                                class="page-link">Derniere</a></li>
+                        {% endif %}
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+{% endblock body %}
+{% block js%}
+<script src="{% static 'js/liste_client.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHj7Rpj1jkT4tRMfm0LbdlJgWLv2KCZEU&libraries=places&callback=initAutocomplete"
+    async defer></script>
+<script src="{% static 'js/autocompleteClient.js'%}"></script>
+{% endblock js%}

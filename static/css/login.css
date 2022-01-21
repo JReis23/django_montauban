@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    color: none;
+    
+}
+
+body .container-fluid{
+  height: 100vh;
+  width: 100vw;
+  background-color: #191e3f;
+}
+
+
+
+.img-montauban{
+  background: radial-gradient(#244382,#191e3f);
+  box-shadow: -10px 20px 50px 17px grey;
+  border-radius: 45px 0 0 45px;
+}
+
+.login{
+  background: radial-gradient(rgb(201, 200, 200), #656565);
+  height: 370px;
+  border-radius: 0 30px 30px 0;
+}
+
+h2, label{
+  font-family: 'Source Serif Pro', serif;
+}
+
+h2{
+  font-size: 2.5rem !important;
+  color: #fff;
+}
+
+label{
+  font-size: 22px;
+  color: #fff;
+}
+
+button{
+  background: radial-gradient(#244382,#191e3f) !important;
+}
+
+button:hover{
+  background: #537ed4 !important;
+}

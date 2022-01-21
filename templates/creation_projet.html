@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% load static %}
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{% static 'css/creation_projet.css' %}">
+
+{% endblock stylesheet %}
+
+
+{% block body %}
+
+
+
+        <div class="row title ">
+            <h2 class="align-self-center">Création de <b>Projets</b></h2>
+        </div>
+        <div class="row">
+            <div class="col-12 align-self-center">
+                <div class="m-3 m-lg-5">
+                    <form action="" method="POST" enctype="multipart/form-data"
+                        class="row form-group col-md-12 g-3 justify-content-center">
+                        {% csrf_token %}
+                        <div class="col-6">
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-5">Date fin provisoire</label>
+                                <div class="col-sm-7">
+                                    {{ form_projet.date_fin_provisoire }}
+                                    {{ form_projet.date_fin_provisoire.errors }}
+
+                                </div>
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-5">Nom Projet</label>
+                                <div class="col-sm-7">
+                                    {{ form_projet.nom_projets }}
+                                    {{ form_projet.nom_projets.errors }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label col-sm-12">Description Projet</label>
+
+                                {{ form_projet.description_projets }}
+                                {{ form_projet.description_projets.errors }}
+
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-5">Adresse Projet</label>
+                                <div class="col-sm-7">
+                                    {{ form_projet.adresse_projets }}
+                                    {{ form_projet.adresse_projets.errors }}
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-5">Code Postal Projet</label>
+                                <div class="col-sm-7">
+                                    {{ form_projet.code_postal_projets }}
+                                    {{ form_projet.code_postal_projets.errors }}
+                                </div>
+                            </div>
+
+
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-5">Ville</label>
+                                <div class="col-sm-7">
+                                    {{ form_projet.ville_projets }}
+                                    {{ form_projet.ville_projets.errors }}
+                                </div>
+
+                            </div>
+
+
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-5">Departement Projet</label>
+                                <div class="col-sm-7">
+                                    {{ form_projet.departement_projets }}
+                                    {{ form_projet.departement_projets.errors }}
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-5">Statut du projet</label>
+                                <div class="col-sm-7">
+                                    {{ form_projet.projet_status_projets }}
+                                    {{ form_projet.projet_status_projets.errors }}
+                                </div>
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-5">Entites intervenante</label>
+                                <div class="col-sm-7">
+                                    {{form_projet.entites_projets}}
+                                    {{form_projet.entites_projets.errors}}
+                                </div>
+
+                            </div>
+
+                            <div class="text-end mt-4">
+                                <button type="submit" class="btn btn-block btn-success">Enregistrer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+{% endblock body %}
+{% block js%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHj7Rpj1jkT4tRMfm0LbdlJgWLv2KCZEU&libraries=places&callback=initAutocomplete"
+    async defer></script>
+<script src="{% static 'js/autocompleteProjet.js'%}"></script>
+{% endblock js%}

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% load static %}
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{% static 'css/creation_client.css' %}">
+
+{%endblock stylesheet%}
+
+
+{% block body %}
+
+
+
+        <div class="row title ">
+            <h2 class="align-self-center">Création de <b>Clients</b></h2>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-8 align-self-center">
+                <div class="m-3 m-lg-5">
+                    <form method="POST" enctype="multipart/form-data"
+                        class="row form-group col-md-12 g-3 justify-content-center">
+                        {% csrf_token %}
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Prenom</label>
+                                {{ form.prenom_clients }}
+                                {{ form.prenom_clients.errors }}
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Nom</label>
+                                {{ form.nom_clients }}
+                                {{ form.nom_clients.errors }}
+
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Téléphone</label>
+                                {{ form.telephone_clients }}
+                                {{ form.telephone_clients.errors }}
+
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                {{ form.mail_clients }}
+                                {{ form.mail_clients.errors }}
+
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Date naissance</label>
+                                {{ form.date_naissance_clients }}
+                                {{ form.date_naissance_clients.errors }}
+
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Photo</label>
+                                {{ form.photo_clients }}
+                                {{ form.photo_clients.errors }}
+
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Adresse</label>
+                                {{ form.adresse_clients }}
+                                {{ form.adresse_clients.errors }}
+
+                            </div>
+                            <div class="col-12 d-flex justify-content-between">
+                                <div class="col-md-5">
+                                    <div class="mb-3">
+                                        <label class="form-label">Code Postal</label>
+                                        {{ form.code_postal_clients }}
+                                        {{ form.code_postal_clients.errors }}
+    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ville</label>
+                                {{ form.ville_clients }}
+                                {{ form.ville_clients.errors }}
+                                
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Département</label>
+                                {{ form.departement_clients }}
+                                {{ form.departement_clients.errors }}
+                                
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Pays</label>
+                                {{ form.pays_clients }}
+                                {{ form.pays_clients.errors }}
+                                
+                            </div>
+                            <div class="text-end mt-4">
+                                <button type="submit" class="btn btn-block btn-success">Enregistrer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+ 
+
+{% endblock body %}
+{% block js%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHj7Rpj1jkT4tRMfm0LbdlJgWLv2KCZEU&libraries=places&callback=initAutocomplete"
+    async defer></script>
+<script src="{% static 'js/autocompleteClient.js'%}"></script>
+{% endblock js%}

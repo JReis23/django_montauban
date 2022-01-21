@@ -1,0 +1,23 @@
+{% extends 'contact_client.html'%}
+
+
+{% block info %}
+<div class="container infoclientcontact">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h5>Marcation de Rendez-vous pour le Client <b>{{ contact_clients.prenom_clients}} {{contact_clients.nom_clients }}</b>
+            </h5>
+            <form action="" method="POST" enctype="multipart/form-data" class="row g-3">
+                {% csrf_token %}
+                {{ form_contact.as_p}}
+                
+                
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary rdv">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% load static %}
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{% static 'css/checkpoints_all.css' %}">
+
+{%endblock stylesheet%}
+
+
+{% block body %}
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6 d-flex">
+                        <h2>Liste <b>Checkpoints en cours</b></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <table class="table table-striped table-hover">
+                        
+                        <form action="">
+                            {% csrf_token %}
+                            {{myFilter.form.projet_status_projets}}
+                            {{myFilter.form.user.modified_by}}
+                            
+                        </form>
+                       
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Checkpoint</th>
+                                <th>Statut Projet</th>
+                                <th>Derniere modification</th>
+                                <th>Utilisateur</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for check in checks %}
+                            {% if projet_checks.check14 != True %}
+                            <tr>
+                                <td><a href="{% url 'client_info' check.projet_clients.pk %}"><img
+                                    src="{{ check.projet_clients.photo_clients.url }}" class="avatar img-fluid"
+                                    alt="Avatar">
+                                    {{ check.projet_clients.prenom_clients}} {{ check.projet_clients.nom_clients}}</a></td>
+                                    <td><a href="{% url 'update' check.pk %}">{{ check.nom_projets }}</a></td>
+                                    <td>{{ check.projet_status_projets }}</td>
+                                    <td>{{ check.checkpoints.pub_date }}</td>
+                                    <td>{{ check.checkpoints.modified_by }}</td>
+                                </tr>
+                            {% else %}
+                            {% endif %}
+                            {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock body%}
+
+    {% block js%}
+
+    {% endblock js%}

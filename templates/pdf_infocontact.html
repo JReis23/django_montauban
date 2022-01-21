@@ -1,0 +1,53 @@
+<body>
+    <div id="k_infos_client">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 align-self-center">
+                    <div class="m-3 m-lg-5">
+                        <form action="" method="POST" enctype="multipart/form-data"
+                            class="row form-group col-md-12 g-3 justify-content-around">
+                            {% csrf_token %}
+                            <div class="col-md-4">
+                                <div class="mb-3 row justify-content-between">
+                                    <label class="form-label col-sm-2">Nom: {{data.client_contact.prenom_clients}}
+                                        {{data.client_contact.nom_clients}}</label>
+
+                                </div>
+                                <div class="mb-3 row justify-content-between">
+                                    <label class="form-label col-sm-4">Telephone:
+                                        {{data.client_contact.telephone_clients}}</label>
+
+                                </div>
+                                <div class="mb-3 row justify-content-between">
+                                    <label class="form-label col-sm-2">Categorie: {{data.categorie}}</label>
+
+                                </div>
+                                <div class="mb-3 row justify-content-between">
+                                    <label class="form-label col-sm-2">Début Rdv: {{data.date_debut}}</label>
+
+                                </div>
+                                <div class="mb-3 row justify-content-between">
+                                    <label class="form-label col-sm-5">Description du Rdv:
+                                        {{data.description_contact}}</label>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 row justify-content-between">
+                                    <label class="form-label col-sm-2">Intervenant: {{data.intervenants}}</label>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3 align-self-center">
+                                <img src="{{clientinfo.photo_clients.url}}" alt="" class="img-fluid">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>

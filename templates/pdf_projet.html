@@ -1,0 +1,99 @@
+<head>
+    <style>
+        @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+        }
+    } @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+        }
+    }
+    </style>
+</head>
+
+<div id="infos_projet">
+    <div class="container-fluid info">
+        <div class="row title align-items-center">
+            <div class="col-sm-6">
+                <h2 class="align-self-center">Information <b>Projet</b></h2>
+            </div>
+            <div class="col-sm-6">
+                <a href="" class="btn btn-secondary"><i class="fas fa-pen text-warning"></i><span>
+                        Modification Projet</span></a>
+                <a href="#" class="btn btn-secondary"><i class="fas fa-file-pdf text-danger"></i>
+                    <span>Exporter en PDF</span></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 align-self-center">
+                <div class="m-3 m-lg-5">
+                    <div class="row form-group col-md-12 g-3 justify-content-around">
+                        <div class="col-md-6">
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-4">Projet du Client</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control"
+                                        placeholder="{{datapro.projet_clients.prenom_clients}} {{projet.projet_clients.nom_clients}}"
+                                        disabled />
+                                </div>
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-4">Titre du projet</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="{{projet.nom_projets}}" disabled />
+                                </div>
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-4">Adresse Projet</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="{{projet.adresse_projets}}" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-4">Date début</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="{{projet.date_debut_projets}}" disabled />
+                                </div>
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-4">Entite intervenant</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="{{projet.entites_projets}}" disabled />
+                                </div>
+                            </div>
+                            <div class="mb-3 row justify-content-between">
+                                <label class="form-label col-sm-4">Statut projet</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" placeholder="{{projet.projet_status_projets}}"
+                                        disabled />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

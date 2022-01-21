@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet%}
+<link rel="stylesheet" href="{% static 'css/validation.css' %}">
+{%endblock stylesheet%}
+
+{% block body%}
+
+
+<div class="row title align-items-center">
+    <div class="col-sm-6">
+        <h2 class="align-self-center">Projets en attente de <b>Validation</b></h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Description Rdv</th>
+                    <th>Intervenant</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contacts in validation %}
+                <tr>
+                    {% if contacts.contactvalidation.valide == False %}
+
+                    <td><a href="{% url 'client_info' contacts.client_contact.pk %}"><img
+                                src="{{ contacts.client_contact.photo_clients.url }}" class="avatar img-fluid"
+                                alt="Avatar">
+                            {{ contacts.client_contact.prenom_clients}}
+                            {{contacts.client_contact.nom_clients}}</a></td>
+                    <td>{{ contacts.description_contact }}</td>
+                    <td>{{ contacts.intervenants }}</td>
+                    <td>
+                        <a href="{% url 'pdf_infocontact' contacts.pk %}"><i
+                                class="fas fa-file-pdf text-danger"></i></a>
+                        <a href="{% url 'validation_contact' contacts.pk %}" class="settings" title="Accepter"
+                            data-toggle="tooltip"><i class="fas fa-check-circle text-success"></i></a>
+                        <a href="{% url 'contact_delete' contacts.pk %}" class="delete" title="Effacer"
+                            data-toggle="tooltip"><i class="fas fa-times-circle text-danger"></i></a>
+                    </td>
+
+                    {% endif %}
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+{% endblock%}
+
+{% block js%}
+{% endblock js%}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/chat.css' %}">
+{% endblock stylesheet %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row title ">
+    <h2 class="align-self-center">Centre de <b>Messages</b></h2>
+  </div>
+
+  <div class="col">
+    <div class="col">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Message</th>
+          </tr>
+        </thead>
+        {% for user in users %}
+        {% if request.user != user %}
+        <tbody>
+          <tr>
+            <td>{{ user.username }}</td>
+            <td>
+              <form action="{% url 'message' %}" id="form_message{{ user.id }}" method="post"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" name="message">
+                <input type="hidden" name='user_id' value='{{ user.id }}'>
+                <button type="submit" value="Submit" class="btn btn-primary">Envoyer Message</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+        {% endif %}
+        {% endfor %}
+      </table>
+    </div>
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Message</th>
+            <th scope="col">Marquer comme Vue</th>
+          </tr>
+        </thead>
+        {% for notification in user.notifications.unread %}
+        <tbody>
+          <tr>
+            <td>{{ notification.actor }}</td>
+            <td>{{ notification.description }}</td>
+            <td>
+              <button type="submit" class="btn btn-outline-success">
+                <a href="{% url 'read' %}">Confirmer</a>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
+{% block js%}
+{% endblock js%}
